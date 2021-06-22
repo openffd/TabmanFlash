@@ -20,7 +20,6 @@ public enum TMTransitionStyle {
 }
 
 /// Object that can provide an animation style.
-internal protocol TMTransitionStyleable: class {
-    
+internal protocol TMTransitionStyleable: AnyObject {
     var transitionStyle: TMTransitionStyle { get set }
 }
