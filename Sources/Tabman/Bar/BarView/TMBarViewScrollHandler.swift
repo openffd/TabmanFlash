@@ -10,9 +10,7 @@ import UIKit
 
 internal protocol TMBarViewScrollHandlerDelegate: AnyObject {
     
-    func barViewScrollHandler(_ handler: TMBarViewScrollHandler,
-                              didReceiveUpdated contentOffset: CGPoint,
-                              from scrollView: UIScrollView)
+    func barViewScrollHandler(_ handler: TMBarViewScrollHandler, didReceiveUpdated contentOffset: CGPoint, from scrollView: UIScrollView)
 }
 
 /// Handler which interprets raw `UIScrollViewDelegate` events and provides updates via `TMBarViewScrollHandlerDelegate`.
