@@ -69,6 +69,23 @@ open class TMLabelBarButton: TMBarButton {
             label.text = newValue
         }
     }
+    
+    public var backgroundColorSelected: UIColor = .white {
+        didSet {
+            if isSelected {
+                backgroundColor = backgroundColorSelected
+            }
+        }
+    }
+    
+    public var backgroundColorUnselected: UIColor = .white {
+        didSet {
+            if !isSelected {
+                backgroundColor = backgroundColorUnselected
+            }
+        }
+    }
+    
     /// Color of the text when unselected / normal.
     open override var tintColor: UIColor! {
         didSet {
@@ -190,7 +207,7 @@ open class TMLabelBarButton: TMBarButton {
             badge.topAnchor.constraint(greaterThanOrEqualTo: badgeContainer.topAnchor),
             badgeContainer.bottomAnchor.constraint(greaterThanOrEqualTo: badge.bottomAnchor),
             badge.centerYAnchor.constraint(equalTo: badgeContainer.centerYAnchor)
-            ])
+        ])
     }
     
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -220,10 +237,10 @@ open class TMLabelBarButton: TMBarButton {
     open override func update(for selectionState: TMBarButton.SelectionState) {
         super.update(for: selectionState)
         
-        let transitionColor = tintColor.interpolate(with: selectedTintColor,
-                                                    percent: selectionState.rawValue)
-        
+        let transitionColor = tintColor.interpolate(with: selectedTintColor, percent: selectionState.rawValue)
         label.textColor = transitionColor
+        
+        backgroundColor = backgroundColorUnselected.interpolate(with: backgroundColorSelected, percent: selectionState.rawValue)
         
         // Because we can't animate nicely between fonts 😩
         // Cross dissolve on 'end' states between font properties.

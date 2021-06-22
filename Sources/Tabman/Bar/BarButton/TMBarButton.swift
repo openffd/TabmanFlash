@@ -114,7 +114,6 @@ open class TMBarButton: UIControl {
     // MARK: Layout
     
     private func layoutBackgroundView() {
-        
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -122,7 +121,7 @@ open class TMBarButton: UIControl {
             backgroundView.topAnchor.constraint(equalTo: topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+        ])
     }
     
     private func layoutContentView() {

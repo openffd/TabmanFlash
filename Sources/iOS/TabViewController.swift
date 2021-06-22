@@ -17,9 +17,9 @@ class TabViewController: TabmanViewController, PageboyViewControllerDataSource, 
     private lazy var viewControllers: [UIViewController] = [
         ChildViewController(page: 1),
         ChildViewController(page: 2),
-        ChildViewController(page: 3),
-        ChildViewController(page: 4),
-        ChildViewController(page: 5)
+//        ChildViewController(page: 3),
+//        ChildViewController(page: 4),
+//        ChildViewController(page: 5)
     ]
     
     // MARK: Lifecycle
@@ -34,12 +34,12 @@ class TabViewController: TabmanViewController, PageboyViewControllerDataSource, 
         let bar = TMBarView.ButtonBar()
         
         // Customize bar properties including layout and other styling.
-        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 4.0, right: 16.0)
+        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 4.0, right: 0.0)
         bar.layout.interButtonSpacing = 24.0
         bar.indicator.weight = .light
         bar.indicator.cornerStyle = .eliptical
         bar.fadesContentEdges = true
-        bar.spacing = 16.0
+//        bar.spacing = 16.0
         
         // Set tint colors for the bar buttons and indicator.
         bar.buttons.customize {
