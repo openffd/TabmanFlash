@@ -120,16 +120,14 @@ open class TabmanViewController: PageboyViewController, PageboyViewControllerDel
     // MARK: Pageboy
     
     /// :nodoc:
-    open override func insertPage(at index: PageboyViewController.PageIndex,
-                                  then updateBehavior: PageboyViewController.PageUpdateBehavior) {
-        bars.forEach({ $0.reloadData(at: index...index, context: .insertion) })
+    open override func insertPage(at index: PageboyViewController.PageIndex, then updateBehavior: PageboyViewController.PageUpdateBehavior) {
+        bars.forEach { $0.reloadData(at: index...index, context: .insertion) }
         super.insertPage(at: index, then: updateBehavior)
     }
     
     /// :nodoc:
-    open override func deletePage(at index: PageboyViewController.PageIndex,
-                                  then updateBehavior: PageboyViewController.PageUpdateBehavior) {
-        bars.forEach({ $0.reloadData(at: index...index, context: .deletion) })
+    open override func deletePage(at index: PageboyViewController.PageIndex, then updateBehavior: PageboyViewController.PageUpdateBehavior) {
+        bars.forEach { $0.reloadData(at: index...index, context: .deletion) }
         super.deletePage(at: index, then: updateBehavior)
     }
     
@@ -142,9 +140,7 @@ open class TabmanViewController: PageboyViewController, PageboyViewControllerDel
         setNeedsInsetsUpdate(to: viewController)
         
         if animated {
-            updateActiveBars(to: CGFloat(index),
-                             direction: direction,
-                             animated: true)
+            updateActiveBars(to: CGFloat(index), direction: direction, animated: true)
         }
     }
     
@@ -154,9 +150,7 @@ open class TabmanViewController: PageboyViewController, PageboyViewControllerDel
                                     direction: NavigationDirection,
                                     animated: Bool) {
         if !animated {
-            updateActiveBars(to: relativeCurrentPosition,
-                             direction: direction,
-                             animated: false)
+            updateActiveBars(to: relativeCurrentPosition,  direction: direction, animated: false)
         }
     }
     
@@ -165,9 +159,7 @@ open class TabmanViewController: PageboyViewController, PageboyViewControllerDel
                                     didScrollToPageAt index: PageIndex,
                                     direction: NavigationDirection,
                                     animated: Bool) {
-        updateActiveBars(to: CGFloat(index),
-                         direction: direction,
-                         animated: false)
+        updateActiveBars(to: CGFloat(index), direction: direction, animated: false)
     }
     
     /// :nodoc:
@@ -182,17 +174,14 @@ open class TabmanViewController: PageboyViewController, PageboyViewControllerDel
                                     currentPageIndex: PageIndex) {
         setNeedsInsetsUpdate(to: currentViewController)
         
-        guard let pageCount = pageboyViewController.pageCount else {
-            return
-        }
-        bars.forEach({ $0.reloadData(at: 0...pageCount - 1, context: .full) })
+        guard let pageCount = pageboyViewController.pageCount else { return }
+        bars.forEach { $0.reloadData(at: 0...pageCount - 1, context: .full) }
     }
     
     // MARK: TMBarDelegate
     
     /// :nodoc:
-    open func bar(_ bar: TMBar,
-                  didRequestScrollTo index: PageboyViewController.PageIndex) {
+    open func bar(_ bar: TMBar, didRequestScrollTo index: PageboyViewController.PageIndex) {
         scrollToPage(.at(index: index), animated: true, completion: nil)
     }
 }
