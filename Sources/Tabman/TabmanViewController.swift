@@ -232,8 +232,8 @@ extension TabmanViewController {
         
         topBarContainer.translatesAutoresizingMaskIntoConstraints = false
         var topConstraints = [
-            topBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            topBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7),
+            topBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7)
         ]
         if #available(iOS 11, *) {
             topConstraints.append(topBarContainer.topAnchor.constraint(equalTo: view.safeAreaTopAnchor))
